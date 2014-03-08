@@ -10,4 +10,9 @@
 
 @interface FSSPopoutMenuViewController : UIViewController
 
+@property (nonatomic) NSArray *menu;
+
+-(id)initWithMenuArray:(NSArray *)menu;
+
+
 @end

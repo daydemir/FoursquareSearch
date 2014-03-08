@@ -7,7 +7,13 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "FSVenue.h"
+
+
 
 @interface FSSVenueDetailViewController : UIViewController
+
+@property (strong, nonatomic) NSArray *venues;
+@property (nonatomic) int selectedVenueIndex;
 
 @end

@@ -7,26 +7,55 @@
 //
 
 #import "FSSVenuesViewController.h"
+#import <CoreLocation/CoreLocation.h>
+#import "Foursquare2.h"
+#import "FSSVenue.h"
+#import "FSSVenueDetailViewController.h"
+#import "FSSPopoutMenuViewController.h"
 
-@interface FSSVenuesViewController ()
+@interface FSSVenuesViewController () <UITableViewDataSource, UITableViewDelegate, CLLocationManagerDelegate, UIGestureRecognizerDelegate, UIViewControllerTransitioningDelegate>
+
+@property (weak, nonatomic) IBOutlet UITableView *VenuesTableView;
+@property (strong, nonatomic) CLLocationManager *locationManager;
+@property (strong, nonatomic) CLLocation *myLocation;
+@property (strong, nonatomic) NSMutableArray *venues;
+
+@property (nonatomic) int selectedVenueIndex;
+@property (strong, nonatomic) FSVenue *selectedVenue;
+@property (strong, nonatomic) FSSVenueDetailViewController *detailViewController;
+@property (strong, nonatomic) FSSPopoutMenuViewController *menuVC;
+
+
+
+
+
 
 @end
 
 @implementation FSSVenuesViewController
 
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
-{
-    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
-    if (self) {
-        // Custom initialization
-    }
-    return self;
-}
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-	// Do any additional setup after loading the view.
+    self.locationManager = [[CLLocationManager alloc] init];
+    self.venues = [[NSMutableArray alloc] init];
+    [Foursquare2 setupFoursquareWithClientId:@"OM1NKM2RUG1AEWDGCY2Q4EYJ1VL3VABTCSSMNOYFGJXP2LCT" secret:@"M3XFABJGDIOFMFBTZ5MZ1HQTHVRXMHIN423YO2BQTABHPKQ5" callbackURL:@"foursearch://foursquare"];
+    [self.VenuesTableView setDataSource:self];
+    [self.VenuesTableView setDelegate:self];
+    [self.locationManager setDelegate:self];
+    self.locationManager.desiredAccuracy = kCLLocationAccuracyBest;
+    self.locationManager.distanceFilter = kCLDistanceFilterNone;
+    [self.locationManager startMonitoringSignificantLocationChanges];
+//    [self.locationManager startUpdatingLocation];
+    [self.VenuesTableView setHidden:YES];
+    self.limit = [NSNumber numberWithInt:2];
+    self.radius = [NSNumber numberWithInt:10000];
+    
+    UILongPressGestureRecognizer *lpgr = [[UILongPressGestureRecognizer alloc]
+                                          initWithTarget:self action:@selector(handleLongPress:)];
+    lpgr.delegate = self;
+    [self.VenuesTableView addGestureRecognizer:lpgr];
 }
 
 - (void)didReceiveMemoryWarning
@@ -34,5 +63,141 @@
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
+
+- (void)getVenues
+{
+    [Foursquare2 venueSearchNearByLatitude:[NSNumber numberWithDouble:self.myLocation.coordinate.latitude] longitude:[NSNumber numberWithDouble:self.myLocation.coordinate.longitude] query:self.query limit:self.limit intent:intentBrowse radius:self.radius categoryId:nil callback:^(BOOL success, id result){
+        if(success && [result isKindOfClass:[NSDictionary class]])
+        {
+            self.venues = [self parseSearchVenuesResultsDictionary:result];
+            [self.VenuesTableView reloadData];
+            [self.VenuesTableView setHidden:NO];
+        }
+    }];
+    
+    
+}
+
+- (NSMutableArray*)parseSearchVenuesResultsDictionary:(NSDictionary*)result{
+    NSLog(@"%@", [result description]);
+    NSArray *groupsArray = [[result objectForKey:@"response"] objectForKey:@"venues"];
+    if([groupsArray count] > 0){
+        
+        NSMutableArray *resultArray = [NSMutableArray array];
+        for (NSDictionary *venue in groupsArray){
+//            NSLog(@"%@", [venue description]);
+            //Get Stats details
+//            NSLog(@"%@", [groupsArray description]);
+            
+            [resultArray addObject:[self createVenueFromDictionary:venue]];
+//
+//          [resultArray addObject:resultDictionary];
+
+        }
+
+        return resultArray;
+    }
+    return [NSMutableArray array];
+}
+
+- (FSVenue*)createVenueFromDictionary:(NSDictionary*)result
+{
+    FSVenue *newVenue = [[FSVenue alloc] init];
+    [newVenue setName:[result objectForKey:@"name"]];
+    [newVenue setVenueId:[result objectForKey:@"id"]];
+    
+    //category
+    NSArray *category = [result objectForKey:@"categories"];
+    [newVenue setCategory:[category[0] objectForKey:@"name"]];
+    
+    //stats
+    NSDictionary *stats = [result objectForKey:@"stats"];
+    NSString *checkInsCount = [stats objectForKey:@"checkinsCount"];
+    if (checkInsCount) [newVenue setCheckInsCount:[checkInsCount integerValue]];
+    NSString *tipCount = [stats objectForKey:@"tipCount"];
+    if (tipCount) [newVenue setTipCount:[tipCount integerValue]];
+    NSString *usersCount = [stats objectForKey:@"usersCount"];
+    if (usersCount) [newVenue setUsersCount:[usersCount integerValue]];
+
+
+    return newVenue;
+}
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+    if([segue.identifier isEqualToString:@"showVenue"])
+    {
+        self.detailViewController = segue.destinationViewController;
+        [self.detailViewController setVenues:self.venues];
+        [self.detailViewController setSelectedVenueIndex:self.selectedVenueIndex];
+
+
+    }
+}
+
+//CLLocationManager delegate
+
+- (void)locationManager:(CLLocationManager *)manager didUpdateLocations:(NSArray *)locations
+{
+    self.myLocation = locations[0];
+    NSTimeInterval howRecent = [[self.myLocation timestamp] timeIntervalSinceNow];
+    if (abs(howRecent)>15.0) {
+        [self.locationManager startMonitoringSignificantLocationChanges];
+    }
+    else {
+        [self.locationManager stopUpdatingLocation];
+    }
+    [self getVenues];
+}
+
+//Table view data source
+
+- (UITableViewCell*)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    UITableViewCell *cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"reuse"];
+    [cell setBackgroundColor:[UIColor yellowColor]];
+    FSVenue *venue = [self.venues objectAtIndex:indexPath.row];
+    [cell.textLabel setText:venue.name];
+    return cell;
+}
+
+
+- (NSInteger)tableView:(UITableView*)tableView numberOfRowsInSection:(NSInteger)section
+{
+    return self.venues.count;
+}
+
+//Table view delegate
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    self.selectedVenue = [self.venues objectAtIndex:indexPath.row];
+    self.selectedVenueIndex = indexPath.row;
+    [self performSegueWithIdentifier:@"showVenue" sender:self];
+
+}
+
+
+//Gesture Recognizer delegate
+-(void) handleLongPress:(UILongPressGestureRecognizer*)gestureRecognizer
+{
+    if(![self.menuVC isViewLoaded] && gestureRecognizer.state == UIGestureRecognizerStateBegan)
+    {
+        self.menuVC = [[FSSPopoutMenuViewController alloc] initWithMenuArray:[NSArray arrayWithObjects:@"first", @"second", @"third", nil]];
+        
+        [self.menuVC setTransitioningDelegate:self];
+        self.modalPresentationStyle = UIModalPresentationCustom;
+        [self presentViewController:self.menuVC animated:YES completion:NULL];
+    }
+    if (gestureRecognizer.state == UIGestureRecognizerStateEnded) {
+        [self.menuVC removeFromParentViewController];
+    }
+}
+
+
+
+
+
+
 
 @end

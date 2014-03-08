@@ -24,7 +24,9 @@
 @interface FSVenue : NSObject<MKAnnotation>
 
 @property (nonatomic,strong)NSString *name;
-@property (nonatomic,strong)NSString *venueId;
+@property (nonatomic,strong)NSString *venueId, *category;
 @property (nonatomic,strong)FSLocation *location;
+@property (nonatomic)NSInteger checkInsCount, tipCount, usersCount, hereNow;
+
 
 @end

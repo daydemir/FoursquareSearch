@@ -10,4 +10,10 @@
 
 @interface FSSVenuesViewController : UIViewController
 
+
+@property (strong, nonatomic) NSNumber *radius, *limit, *latitude, *longitude;
+@property (strong, nonatomic) NSString *query, *location;
+
+@property (nonatomic) BOOL useMyLocation;
+
 @end

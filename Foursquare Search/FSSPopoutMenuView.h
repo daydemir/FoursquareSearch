@@ -10,4 +10,7 @@
 
 @interface FSSPopoutMenuView : UIView
 
+@property (nonatomic) NSString *labelText;
+@property (nonatomic) CGRect *rect;
+
 @end

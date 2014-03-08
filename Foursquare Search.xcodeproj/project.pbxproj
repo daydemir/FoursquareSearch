@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		22A063FD18AB031400A82E6E /* FSSPopoutMenuView.m in Sources */ = {isa = PBXBuildFile; fileRef = 22A063FC18AB031400A82E6E /* FSSPopoutMenuView.m */; };
+		22A0640018AB032900A82E6E /* FSSPopoutMenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 22A063FF18AB032900A82E6E /* FSSPopoutMenuViewController.m */; };
+		22A0640318AB043000A82E6E /* FSSMenuItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 22A0640218AB043000A82E6E /* FSSMenuItem.m */; };
+		22AE43FB189D992B006FC3BB /* UIVenueDetailView.m in Sources */ = {isa = PBXBuildFile; fileRef = 22AE43FA189D992B006FC3BB /* UIVenueDetailView.m */; };
 		22C2D1DE189C562E001027E6 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 22C2D1DD189C562E001027E6 /* Foundation.framework */; };
 		22C2D1E0189C562E001027E6 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 22C2D1DF189C562E001027E6 /* CoreGraphics.framework */; };
 		22C2D1E2189C562E001027E6 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 22C2D1E1189C562E001027E6 /* UIKit.framework */; };
@@ -21,6 +25,22 @@
 		22C2D1FF189C562E001027E6 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 22C2D1E1189C562E001027E6 /* UIKit.framework */; };
 		22C2D207189C562E001027E6 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 22C2D205189C562E001027E6 /* InfoPlist.strings */; };
 		22C2D209189C562E001027E6 /* Foursquare_SearchTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 22C2D208189C562E001027E6 /* Foursquare_SearchTests.m */; };
+		22C2D22A189C56DA001027E6 /* FSOAuth.m in Sources */ = {isa = PBXBuildFile; fileRef = 22C2D213189C56DA001027E6 /* FSOAuth.m */; };
+		22C2D22B189C56DA001027E6 /* CheckinViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 22C2D215189C56DA001027E6 /* CheckinViewController.m */; };
+		22C2D22C189C56DA001027E6 /* Foursquare2.m in Sources */ = {isa = PBXBuildFile; fileRef = 22C2D217189C56DA001027E6 /* Foursquare2.m */; };
+		22C2D22D189C56DA001027E6 /* FSAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 22C2D219189C56DA001027E6 /* FSAppDelegate.m */; };
+		22C2D22E189C56DA001027E6 /* FSConverter.m in Sources */ = {isa = PBXBuildFile; fileRef = 22C2D21B189C56DA001027E6 /* FSConverter.m */; };
+		22C2D22F189C56DA001027E6 /* FSRequester.m in Sources */ = {isa = PBXBuildFile; fileRef = 22C2D21D189C56DA001027E6 /* FSRequester.m */; };
+		22C2D230189C56DA001027E6 /* FSTargetCallback.m in Sources */ = {isa = PBXBuildFile; fileRef = 22C2D21F189C56DA001027E6 /* FSTargetCallback.m */; };
+		22C2D231189C56DA001027E6 /* FSVenue.m in Sources */ = {isa = PBXBuildFile; fileRef = 22C2D221189C56DA001027E6 /* FSVenue.m */; };
+		22C2D232189C56DA001027E6 /* FSWebLogin.m in Sources */ = {isa = PBXBuildFile; fileRef = 22C2D223189C56DA001027E6 /* FSWebLogin.m */; };
+		22C2D233189C56DA001027E6 /* FSWebLogin.xib in Resources */ = {isa = PBXBuildFile; fileRef = 22C2D224189C56DA001027E6 /* FSWebLogin.xib */; };
+		22C2D235189C56DA001027E6 /* NearbyVenuesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 22C2D227189C56DA001027E6 /* NearbyVenuesViewController.m */; };
+		22C2D236189C56DA001027E6 /* SettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 22C2D229189C56DA001027E6 /* SettingsViewController.m */; };
+		22C2D239189C5DAB001027E6 /* FSSVenuesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 22C2D238189C5DAB001027E6 /* FSSVenuesViewController.m */; };
+		22C2D23B189C67E2001027E6 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 22C2D23A189C67E2001027E6 /* CoreLocation.framework */; };
+		22C2D23E189C6B25001027E6 /* FSSVenue.m in Sources */ = {isa = PBXBuildFile; fileRef = 22C2D23D189C6B25001027E6 /* FSSVenue.m */; };
+		22C2D241189C8BD5001027E6 /* FSSVenueDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 22C2D240189C8BD5001027E6 /* FSSVenueDetailViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -34,6 +54,14 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		22A063FB18AB031400A82E6E /* FSSPopoutMenuView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSSPopoutMenuView.h; sourceTree = "<group>"; };
+		22A063FC18AB031400A82E6E /* FSSPopoutMenuView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSSPopoutMenuView.m; sourceTree = "<group>"; };
+		22A063FE18AB032900A82E6E /* FSSPopoutMenuViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSSPopoutMenuViewController.h; sourceTree = "<group>"; };
+		22A063FF18AB032900A82E6E /* FSSPopoutMenuViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSSPopoutMenuViewController.m; sourceTree = "<group>"; };
+		22A0640118AB043000A82E6E /* FSSMenuItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSSMenuItem.h; sourceTree = "<group>"; };
+		22A0640218AB043000A82E6E /* FSSMenuItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSSMenuItem.m; sourceTree = "<group>"; };
+		22AE43F9189D992B006FC3BB /* UIVenueDetailView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UIVenueDetailView.h; sourceTree = "<group>"; };
+		22AE43FA189D992B006FC3BB /* UIVenueDetailView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UIVenueDetailView.m; sourceTree = "<group>"; };
 		22C2D1DA189C562E001027E6 /* Foursquare Search.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Foursquare Search.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		22C2D1DD189C562E001027E6 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		22C2D1DF189C562E001027E6 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -53,6 +81,36 @@
 		22C2D204189C562E001027E6 /* Foursquare SearchTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Foursquare SearchTests-Info.plist"; sourceTree = "<group>"; };
 		22C2D206189C562E001027E6 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		22C2D208189C562E001027E6 /* Foursquare_SearchTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Foursquare_SearchTests.m; sourceTree = "<group>"; };
+		22C2D212189C56DA001027E6 /* FSOAuth.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSOAuth.h; sourceTree = "<group>"; };
+		22C2D213189C56DA001027E6 /* FSOAuth.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSOAuth.m; sourceTree = "<group>"; };
+		22C2D214189C56DA001027E6 /* CheckinViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CheckinViewController.h; sourceTree = "<group>"; };
+		22C2D215189C56DA001027E6 /* CheckinViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CheckinViewController.m; sourceTree = "<group>"; };
+		22C2D216189C56DA001027E6 /* Foursquare2.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Foursquare2.h; sourceTree = "<group>"; };
+		22C2D217189C56DA001027E6 /* Foursquare2.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Foursquare2.m; sourceTree = "<group>"; };
+		22C2D218189C56DA001027E6 /* FSAppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSAppDelegate.h; sourceTree = "<group>"; };
+		22C2D219189C56DA001027E6 /* FSAppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSAppDelegate.m; sourceTree = "<group>"; };
+		22C2D21A189C56DA001027E6 /* FSConverter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSConverter.h; sourceTree = "<group>"; };
+		22C2D21B189C56DA001027E6 /* FSConverter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSConverter.m; sourceTree = "<group>"; };
+		22C2D21C189C56DA001027E6 /* FSRequester.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSRequester.h; sourceTree = "<group>"; };
+		22C2D21D189C56DA001027E6 /* FSRequester.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSRequester.m; sourceTree = "<group>"; };
+		22C2D21E189C56DA001027E6 /* FSTargetCallback.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSTargetCallback.h; sourceTree = "<group>"; };
+		22C2D21F189C56DA001027E6 /* FSTargetCallback.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSTargetCallback.m; sourceTree = "<group>"; };
+		22C2D220189C56DA001027E6 /* FSVenue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSVenue.h; sourceTree = "<group>"; };
+		22C2D221189C56DA001027E6 /* FSVenue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSVenue.m; sourceTree = "<group>"; };
+		22C2D222189C56DA001027E6 /* FSWebLogin.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSWebLogin.h; sourceTree = "<group>"; };
+		22C2D223189C56DA001027E6 /* FSWebLogin.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSWebLogin.m; sourceTree = "<group>"; };
+		22C2D224189C56DA001027E6 /* FSWebLogin.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FSWebLogin.xib; sourceTree = "<group>"; };
+		22C2D226189C56DA001027E6 /* NearbyVenuesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NearbyVenuesViewController.h; sourceTree = "<group>"; };
+		22C2D227189C56DA001027E6 /* NearbyVenuesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NearbyVenuesViewController.m; sourceTree = "<group>"; };
+		22C2D228189C56DA001027E6 /* SettingsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingsViewController.h; sourceTree = "<group>"; };
+		22C2D229189C56DA001027E6 /* SettingsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingsViewController.m; sourceTree = "<group>"; };
+		22C2D237189C5DAB001027E6 /* FSSVenuesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSSVenuesViewController.h; sourceTree = "<group>"; };
+		22C2D238189C5DAB001027E6 /* FSSVenuesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSSVenuesViewController.m; sourceTree = "<group>"; };
+		22C2D23A189C67E2001027E6 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
+		22C2D23C189C6B25001027E6 /* FSSVenue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSSVenue.h; sourceTree = "<group>"; };
+		22C2D23D189C6B25001027E6 /* FSSVenue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSSVenue.m; sourceTree = "<group>"; };
+		22C2D23F189C8BD5001027E6 /* FSSVenueDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSSVenueDetailViewController.h; sourceTree = "<group>"; };
+		22C2D240189C8BD5001027E6 /* FSSVenueDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSSVenueDetailViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -60,6 +118,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				22C2D23B189C67E2001027E6 /* CoreLocation.framework in Frameworks */,
 				22C2D1E0189C562E001027E6 /* CoreGraphics.framework in Frameworks */,
 				22C2D1E2189C562E001027E6 /* UIKit.framework in Frameworks */,
 				22C2D1DE189C562E001027E6 /* Foundation.framework in Frameworks */,
@@ -101,6 +160,7 @@
 		22C2D1DC189C562E001027E6 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				22C2D23A189C67E2001027E6 /* CoreLocation.framework */,
 				22C2D1DD189C562E001027E6 /* Foundation.framework */,
 				22C2D1DF189C562E001027E6 /* CoreGraphics.framework */,
 				22C2D1E1189C562E001027E6 /* UIKit.framework */,
@@ -112,13 +172,27 @@
 		22C2D1E3189C562E001027E6 /* Foursquare Search */ = {
 			isa = PBXGroup;
 			children = (
+				22A063FB18AB031400A82E6E /* FSSPopoutMenuView.h */,
+				22A063FC18AB031400A82E6E /* FSSPopoutMenuView.m */,
+				22A063FE18AB032900A82E6E /* FSSPopoutMenuViewController.h */,
+				22A063FF18AB032900A82E6E /* FSSPopoutMenuViewController.m */,
 				22C2D1EC189C562E001027E6 /* FSSAppDelegate.h */,
 				22C2D1ED189C562E001027E6 /* FSSAppDelegate.m */,
 				22C2D1EF189C562E001027E6 /* Main.storyboard */,
+				22C2D23F189C8BD5001027E6 /* FSSVenueDetailViewController.h */,
+				22C2D240189C8BD5001027E6 /* FSSVenueDetailViewController.m */,
+				22C2D237189C5DAB001027E6 /* FSSVenuesViewController.h */,
+				22C2D238189C5DAB001027E6 /* FSSVenuesViewController.m */,
 				22C2D1F2189C562E001027E6 /* FSSViewController.h */,
 				22C2D1F3189C562E001027E6 /* FSSViewController.m */,
 				22C2D1F5189C562E001027E6 /* Images.xcassets */,
 				22C2D1E4189C562E001027E6 /* Supporting Files */,
+				22C2D23C189C6B25001027E6 /* FSSVenue.h */,
+				22C2D23D189C6B25001027E6 /* FSSVenue.m */,
+				22AE43F9189D992B006FC3BB /* UIVenueDetailView.h */,
+				22AE43FA189D992B006FC3BB /* UIVenueDetailView.m */,
+				22A0640118AB043000A82E6E /* FSSMenuItem.h */,
+				22A0640218AB043000A82E6E /* FSSMenuItem.m */,
 			);
 			path = "Foursquare Search";
 			sourceTree = "<group>";
@@ -126,6 +200,29 @@
 		22C2D1E4189C562E001027E6 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				22C2D212189C56DA001027E6 /* FSOAuth.h */,
+				22C2D213189C56DA001027E6 /* FSOAuth.m */,
+				22C2D214189C56DA001027E6 /* CheckinViewController.h */,
+				22C2D215189C56DA001027E6 /* CheckinViewController.m */,
+				22C2D216189C56DA001027E6 /* Foursquare2.h */,
+				22C2D217189C56DA001027E6 /* Foursquare2.m */,
+				22C2D218189C56DA001027E6 /* FSAppDelegate.h */,
+				22C2D219189C56DA001027E6 /* FSAppDelegate.m */,
+				22C2D21A189C56DA001027E6 /* FSConverter.h */,
+				22C2D21B189C56DA001027E6 /* FSConverter.m */,
+				22C2D21C189C56DA001027E6 /* FSRequester.h */,
+				22C2D21D189C56DA001027E6 /* FSRequester.m */,
+				22C2D21E189C56DA001027E6 /* FSTargetCallback.h */,
+				22C2D21F189C56DA001027E6 /* FSTargetCallback.m */,
+				22C2D220189C56DA001027E6 /* FSVenue.h */,
+				22C2D221189C56DA001027E6 /* FSVenue.m */,
+				22C2D222189C56DA001027E6 /* FSWebLogin.h */,
+				22C2D223189C56DA001027E6 /* FSWebLogin.m */,
+				22C2D224189C56DA001027E6 /* FSWebLogin.xib */,
+				22C2D226189C56DA001027E6 /* NearbyVenuesViewController.h */,
+				22C2D227189C56DA001027E6 /* NearbyVenuesViewController.m */,
+				22C2D228189C56DA001027E6 /* SettingsViewController.h */,
+				22C2D229189C56DA001027E6 /* SettingsViewController.m */,
 				22C2D1E5189C562E001027E6 /* Foursquare Search-Info.plist */,
 				22C2D1E6189C562E001027E6 /* InfoPlist.strings */,
 				22C2D1E9189C562E001027E6 /* main.m */,
@@ -232,6 +329,7 @@
 				22C2D1F6189C562E001027E6 /* Images.xcassets in Resources */,
 				22C2D1E8189C562E001027E6 /* InfoPlist.strings in Resources */,
 				22C2D1F1189C562E001027E6 /* Main.storyboard in Resources */,
+				22C2D233189C56DA001027E6 /* FSWebLogin.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -250,9 +348,27 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				22A0640318AB043000A82E6E /* FSSMenuItem.m in Sources */,
 				22C2D1EA189C562E001027E6 /* main.m in Sources */,
+				22C2D231189C56DA001027E6 /* FSVenue.m in Sources */,
+				22C2D22E189C56DA001027E6 /* FSConverter.m in Sources */,
+				22A0640018AB032900A82E6E /* FSSPopoutMenuViewController.m in Sources */,
+				22C2D239189C5DAB001027E6 /* FSSVenuesViewController.m in Sources */,
+				22C2D23E189C6B25001027E6 /* FSSVenue.m in Sources */,
+				22AE43FB189D992B006FC3BB /* UIVenueDetailView.m in Sources */,
+				22C2D241189C8BD5001027E6 /* FSSVenueDetailViewController.m in Sources */,
+				22C2D230189C56DA001027E6 /* FSTargetCallback.m in Sources */,
+				22C2D22D189C56DA001027E6 /* FSAppDelegate.m in Sources */,
 				22C2D1EE189C562E001027E6 /* FSSAppDelegate.m in Sources */,
+				22C2D22B189C56DA001027E6 /* CheckinViewController.m in Sources */,
+				22C2D232189C56DA001027E6 /* FSWebLogin.m in Sources */,
+				22C2D22C189C56DA001027E6 /* Foursquare2.m in Sources */,
+				22C2D235189C56DA001027E6 /* NearbyVenuesViewController.m in Sources */,
+				22C2D22A189C56DA001027E6 /* FSOAuth.m in Sources */,
 				22C2D1F4189C562E001027E6 /* FSSViewController.m in Sources */,
+				22A063FD18AB031400A82E6E /* FSSPopoutMenuView.m in Sources */,
+				22C2D22F189C56DA001027E6 /* FSRequester.m in Sources */,
+				22C2D236189C56DA001027E6 /* SettingsViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -461,6 +577,7 @@
 				22C2D20E189C562E001027E6 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		22C2D20F189C562E001027E6 /* Build configuration list for PBXNativeTarget "Foursquare SearchTests" */ = {
 			isa = XCConfigurationList;
@@ -469,6 +586,7 @@
 				22C2D211189C562E001027E6 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

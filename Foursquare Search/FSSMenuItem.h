@@ -10,4 +10,6 @@
 
 @interface FSSMenuItem : NSObject
 
+@property (nonatomic) BOOL hasSubMenu;
+
 @end
