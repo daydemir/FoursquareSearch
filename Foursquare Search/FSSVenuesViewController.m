@@ -12,6 +12,9 @@
 #import "FSSVenue.h"
 #import "FSSVenueDetailViewController.h"
 #import "FSSPopoutMenuViewController.h"
+#import "FSSPopoutMenuView.h"
+#import "FSSLongPressMenuGestureRecognizer.h"
+#import "FSSMenuItem.h"
 
 @interface FSSVenuesViewController () <UITableViewDataSource, UITableViewDelegate, CLLocationManagerDelegate, UIGestureRecognizerDelegate, UIViewControllerTransitioningDelegate>
 
@@ -24,6 +27,9 @@
 @property (strong, nonatomic) FSVenue *selectedVenue;
 @property (strong, nonatomic) FSSVenueDetailViewController *detailViewController;
 @property (strong, nonatomic) FSSPopoutMenuViewController *menuVC;
+
+@property (nonatomic) NSMutableArray *menuItemViews;
+@property (nonatomic) NSArray *menu;
 
 
 
@@ -49,13 +55,24 @@
     [self.locationManager startMonitoringSignificantLocationChanges];
 //    [self.locationManager startUpdatingLocation];
     [self.VenuesTableView setHidden:YES];
-    self.limit = [NSNumber numberWithInt:2];
+    self.limit = [NSNumber numberWithInt:50];
     self.radius = [NSNumber numberWithInt:10000];
     
-    UILongPressGestureRecognizer *lpgr = [[UILongPressGestureRecognizer alloc]
-                                          initWithTarget:self action:@selector(handleLongPress:)];
+    FSSMenuItem *item1 = [[FSSMenuItem alloc] init];
+    FSSMenuItem *item2 = [[FSSMenuItem alloc] init];
+    FSSMenuItem *item3 = [[FSSMenuItem alloc] init];
+    [item1 setName:@"First"];
+    [item2 setName:@"Second"];
+    [item3 setName:@"Third"];
+    
+    NSArray *items = [[NSArray alloc] initWithObjects:item1, item2, item3, nil];
+    
+    FSSLongPressMenuGestureRecognizer *lpgr = [[FSSLongPressMenuGestureRecognizer alloc]
+                                          initWithTarget:self action:@selector(handleLongPress:) topLevelMenu:items];
     lpgr.delegate = self;
     [self.VenuesTableView addGestureRecognizer:lpgr];
+    
+
 }
 
 - (void)didReceiveMemoryWarning
@@ -108,7 +125,9 @@
     
     //category
     NSArray *category = [result objectForKey:@"categories"];
-    [newVenue setCategory:[category[0] objectForKey:@"name"]];
+//    if (category[0]) {
+//        [newVenue setCategory:[category[0] objectForKey:@"name"]];
+//    }
     
     //stats
     NSDictionary *stats = [result objectForKey:@"stats"];
@@ -181,17 +200,7 @@
 //Gesture Recognizer delegate
 -(void) handleLongPress:(UILongPressGestureRecognizer*)gestureRecognizer
 {
-    if(![self.menuVC isViewLoaded] && gestureRecognizer.state == UIGestureRecognizerStateBegan)
-    {
-        self.menuVC = [[FSSPopoutMenuViewController alloc] initWithMenuArray:[NSArray arrayWithObjects:@"first", @"second", @"third", nil]];
-        
-        [self.menuVC setTransitioningDelegate:self];
-        self.modalPresentationStyle = UIModalPresentationCustom;
-        [self presentViewController:self.menuVC animated:YES completion:NULL];
-    }
-    if (gestureRecognizer.state == UIGestureRecognizerStateEnded) {
-        [self.menuVC removeFromParentViewController];
-    }
+    
 }
 
 

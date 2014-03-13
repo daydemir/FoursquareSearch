@@ -10,6 +10,8 @@
 
 @interface FSSMenuItem : NSObject
 
+@property (nonatomic) NSString *name;
 @property (nonatomic) BOOL hasSubMenu;
+@property (nonatomic) NSArray *subMenuItems;
 
 @end

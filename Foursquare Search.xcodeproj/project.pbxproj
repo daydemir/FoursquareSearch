@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2264FB7718CEB93D00512808 /* FSSLongPressMenuGestureRecognizer.m in Sources */ = {isa = PBXBuildFile; fileRef = 2264FB7618CEB93D00512808 /* FSSLongPressMenuGestureRecognizer.m */; };
+		2264FB7B18CFE02F00512808 /* FSSMenu.m in Sources */ = {isa = PBXBuildFile; fileRef = 2264FB7A18CFE02F00512808 /* FSSMenu.m */; };
 		22A063FD18AB031400A82E6E /* FSSPopoutMenuView.m in Sources */ = {isa = PBXBuildFile; fileRef = 22A063FC18AB031400A82E6E /* FSSPopoutMenuView.m */; };
 		22A0640018AB032900A82E6E /* FSSPopoutMenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 22A063FF18AB032900A82E6E /* FSSPopoutMenuViewController.m */; };
 		22A0640318AB043000A82E6E /* FSSMenuItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 22A0640218AB043000A82E6E /* FSSMenuItem.m */; };
@@ -54,6 +56,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		2264FB7518CEB93D00512808 /* FSSLongPressMenuGestureRecognizer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSSLongPressMenuGestureRecognizer.h; sourceTree = "<group>"; };
+		2264FB7618CEB93D00512808 /* FSSLongPressMenuGestureRecognizer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSSLongPressMenuGestureRecognizer.m; sourceTree = "<group>"; };
+		2264FB7918CFE02F00512808 /* FSSMenu.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSSMenu.h; sourceTree = "<group>"; };
+		2264FB7A18CFE02F00512808 /* FSSMenu.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSSMenu.m; sourceTree = "<group>"; };
 		22A063FB18AB031400A82E6E /* FSSPopoutMenuView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSSPopoutMenuView.h; sourceTree = "<group>"; };
 		22A063FC18AB031400A82E6E /* FSSPopoutMenuView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSSPopoutMenuView.m; sourceTree = "<group>"; };
 		22A063FE18AB032900A82E6E /* FSSPopoutMenuViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSSPopoutMenuViewController.h; sourceTree = "<group>"; };
@@ -191,8 +197,12 @@
 				22C2D23D189C6B25001027E6 /* FSSVenue.m */,
 				22AE43F9189D992B006FC3BB /* UIVenueDetailView.h */,
 				22AE43FA189D992B006FC3BB /* UIVenueDetailView.m */,
+				2264FB7918CFE02F00512808 /* FSSMenu.h */,
+				2264FB7A18CFE02F00512808 /* FSSMenu.m */,
 				22A0640118AB043000A82E6E /* FSSMenuItem.h */,
 				22A0640218AB043000A82E6E /* FSSMenuItem.m */,
+				2264FB7518CEB93D00512808 /* FSSLongPressMenuGestureRecognizer.h */,
+				2264FB7618CEB93D00512808 /* FSSLongPressMenuGestureRecognizer.m */,
 			);
 			path = "Foursquare Search";
 			sourceTree = "<group>";
@@ -361,11 +371,13 @@
 				22C2D22D189C56DA001027E6 /* FSAppDelegate.m in Sources */,
 				22C2D1EE189C562E001027E6 /* FSSAppDelegate.m in Sources */,
 				22C2D22B189C56DA001027E6 /* CheckinViewController.m in Sources */,
+				2264FB7718CEB93D00512808 /* FSSLongPressMenuGestureRecognizer.m in Sources */,
 				22C2D232189C56DA001027E6 /* FSWebLogin.m in Sources */,
 				22C2D22C189C56DA001027E6 /* Foursquare2.m in Sources */,
 				22C2D235189C56DA001027E6 /* NearbyVenuesViewController.m in Sources */,
 				22C2D22A189C56DA001027E6 /* FSOAuth.m in Sources */,
 				22C2D1F4189C562E001027E6 /* FSSViewController.m in Sources */,
+				2264FB7B18CFE02F00512808 /* FSSMenu.m in Sources */,
 				22A063FD18AB031400A82E6E /* FSSPopoutMenuView.m in Sources */,
 				22C2D22F189C56DA001027E6 /* FSRequester.m in Sources */,
 				22C2D236189C56DA001027E6 /* SettingsViewController.m in Sources */,

@@ -20,11 +20,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Foursquare Search/FSSVenuesViewController.m"
-            timestampString = "413862129.957942"
+            timestampString = "416277606.108719"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "69"
-            endingLineNumber = "69"
+            startingLineNumber = "86"
+            endingLineNumber = "86"
             landmarkName = "-getVenues"
             landmarkType = "5">
             <Locations>
@@ -66,11 +66,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Foursquare Search/FSSVenuesViewController.m"
-            timestampString = "413862129.957942"
+            timestampString = "416277606.108719"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "47"
-            endingLineNumber = "47"
+            startingLineNumber = "53"
+            endingLineNumber = "53"
             landmarkName = "-viewDidLoad"
             landmarkType = "5">
          </BreakpointContent>
@@ -82,11 +82,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Foursquare Search/FSSVenuesViewController.m"
-            timestampString = "413862129.957942"
+            timestampString = "416277606.108719"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "167"
-            endingLineNumber = "167"
+            startingLineNumber = "186"
+            endingLineNumber = "186"
             landmarkName = "-tableView:numberOfRowsInSection:"
             landmarkType = "5">
          </BreakpointContent>
@@ -98,11 +98,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Foursquare Search/FSSVenuesViewController.m"
-            timestampString = "413862129.957942"
+            timestampString = "416277606.108719"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "157"
-            endingLineNumber = "157"
+            startingLineNumber = "176"
+            endingLineNumber = "176"
             landmarkName = "-tableView:cellForRowAtIndexPath:"
             landmarkType = "5">
          </BreakpointContent>
@@ -114,11 +114,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Foursquare Search/FSSVenuesViewController.m"
-            timestampString = "413862129.957942"
+            timestampString = "416277606.108719"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "89"
-            endingLineNumber = "89"
+            startingLineNumber = "106"
+            endingLineNumber = "106"
             landmarkName = "-parseSearchVenuesResultsDictionary:"
             landmarkType = "5">
          </BreakpointContent>
@@ -130,11 +130,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Foursquare Search/FSSVenuesViewController.m"
-            timestampString = "413862129.957942"
+            timestampString = "416277606.108719"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "73"
-            endingLineNumber = "73"
+            startingLineNumber = "90"
+            endingLineNumber = "90"
             landmarkName = "-getVenues"
             landmarkType = "5">
          </BreakpointContent>
@@ -146,11 +146,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Foursquare Search/FSSVenuesViewController.m"
-            timestampString = "413862129.957942"
+            timestampString = "416277606.108719"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "145"
-            endingLineNumber = "145"
+            startingLineNumber = "164"
+            endingLineNumber = "164"
             landmarkName = "-locationManager:didUpdateLocations:"
             landmarkType = "5">
          </BreakpointContent>
@@ -258,11 +258,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Foursquare Search/FSSVenuesViewController.m"
-            timestampString = "413862129.957942"
+            timestampString = "416277606.108719"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "132"
-            endingLineNumber = "132"
+            startingLineNumber = "151"
+            endingLineNumber = "151"
             landmarkName = "-prepareForSegue:sender:"
             landmarkType = "5">
          </BreakpointContent>
@@ -313,6 +313,52 @@
             endingLineNumber = "54"
             landmarkName = "-viewDidLoad"
             landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Foursquare Search/FSSLongPressMenuGestureRecognizer.m"
+            timestampString = "416361828.340399"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "85"
+            endingLineNumber = "85"
+            landmarkName = "-showMenu"
+            landmarkType = "5">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "-[FSSLongPressMenuGestureRecognizer showMenu]"
+                  moduleName = "Foursquare Search"
+                  urlString = "file:///Users/Deniz/Developer/Personal/Foursquare%20Search/Foursquare%20Search/FSSLongPressMenuGestureRecognizer.m"
+                  timestampString = "416277752.851659"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "83"
+                  endingLineNumber = "83"
+                  offsetFromSymbolStart = "19">
+               </Location>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "-[FSSLongPressMenuGestureRecognizer showMenu]"
+                  moduleName = "Foursquare Search"
+                  urlString = "file:///Users/Deniz/Developer/Personal/Foursquare%20Search/Foursquare%20Search/FSSLongPressMenuGestureRecognizer.m"
+                  timestampString = "416277752.851829"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "83"
+                  endingLineNumber = "83"
+                  offsetFromSymbolStart = "589">
+               </Location>
+            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>
