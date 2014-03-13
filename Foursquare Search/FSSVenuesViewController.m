@@ -61,9 +61,17 @@
     FSSMenuItem *item1 = [[FSSMenuItem alloc] init];
     FSSMenuItem *item2 = [[FSSMenuItem alloc] init];
     FSSMenuItem *item3 = [[FSSMenuItem alloc] init];
+    FSSMenuItem *subItem1 = [[FSSMenuItem alloc] init];
+    FSSMenuItem *subItem2 = [[FSSMenuItem alloc] init];
     [item1 setName:@"First"];
-    [item2 setName:@"Second"];
+    [item2 setName:@"Share..."];
     [item3 setName:@"Third"];
+    [subItem1 setName:@"Email"];
+    [subItem2 setName:@"Message"];
+    
+    [item2 setHasSubMenu:YES];
+    [item2 setSubMenuItems:[NSArray arrayWithObjects:subItem1, subItem2, nil]];
+
     
     NSArray *items = [[NSArray alloc] initWithObjects:item1, item2, item3, nil];
     

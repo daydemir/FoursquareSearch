@@ -11,5 +11,7 @@
 @interface FSSPopoutMenuView : UIView
 
 @property (nonatomic) NSString *labelText;
+@property (nonatomic) BOOL isSelected;
+@property (nonatomic) CGRect originalFrame, selectedFrame;
 
 @end
