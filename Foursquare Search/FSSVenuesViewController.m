@@ -61,19 +61,33 @@
     FSSMenuItem *item1 = [[FSSMenuItem alloc] init];
     FSSMenuItem *item2 = [[FSSMenuItem alloc] init];
     FSSMenuItem *item3 = [[FSSMenuItem alloc] init];
+    FSSMenuItem *item4 = [[FSSMenuItem alloc] init];
+    FSSMenuItem *item5 = [[FSSMenuItem alloc] init];
     FSSMenuItem *subItem1 = [[FSSMenuItem alloc] init];
     FSSMenuItem *subItem2 = [[FSSMenuItem alloc] init];
+    FSSMenuItem *subItem3 = [[FSSMenuItem alloc] init];
+    FSSMenuItem *subItem4 = [[FSSMenuItem alloc] init];
+    FSSMenuItem *subItem5 = [[FSSMenuItem alloc] init];
     [item1 setName:@"First"];
-    [item2 setName:@"Share..."];
+    [item2 setName:@"Share >"];
     [item3 setName:@"Third"];
+    [item4 setName:@"FOURTH"];
+    [item5 setName:@"DA fif"];
+    
     [subItem1 setName:@"Email"];
     [subItem2 setName:@"Message"];
+    [subItem3 setName:@"To-Do"];
+    [subItem4 setName:@"Favorites List"];
+    [subItem5 setName:@"WOAH"];
     
     [item2 setHasSubMenu:YES];
+    [item3 setHasSubMenu:YES];
     [item2 setSubMenuItems:[NSArray arrayWithObjects:subItem1, subItem2, nil]];
+    [item3 setSubMenuItems:[NSArray arrayWithObjects:subItem3, subItem4, subItem5, nil]];
+    
 
     
-    NSArray *items = [[NSArray alloc] initWithObjects:item1, item2, item3, nil];
+    NSArray *items = [[NSArray alloc] initWithObjects:item1, item2, item3, item4, item5, nil];
     
     FSSLongPressMenuGestureRecognizer *lpgr = [[FSSLongPressMenuGestureRecognizer alloc]
                                           initWithTarget:self action:@selector(handleLongPress:) topLevelMenu:items];
@@ -182,7 +196,7 @@
 - (UITableViewCell*)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     UITableViewCell *cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"reuse"];
-    [cell setBackgroundColor:[UIColor yellowColor]];
+//    [cell setBackgroundColor:[UIColor yellowColor]];
     FSVenue *venue = [self.venues objectAtIndex:indexPath.row];
     [cell.textLabel setText:venue.name];
     return cell;

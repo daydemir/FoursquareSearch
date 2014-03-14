@@ -13,5 +13,6 @@
 @property (nonatomic) NSString *labelText;
 @property (nonatomic) BOOL isSelected;
 @property (nonatomic) CGRect originalFrame, selectedFrame;
+@property (nonatomic) CGFloat originalCornerRadius, selectedCornerRadius;
 
 @end

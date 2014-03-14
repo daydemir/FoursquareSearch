@@ -10,6 +10,9 @@
 #import "FSSPopoutMenuView.h"
 #import "FSSMenuItem.h"
 
+#define DEGREES_TO_RADIANS(angle) ((angle) / 180.0 * M_PI)
+
+
 @interface FSSLongPressMenuGestureRecognizer()
 
 @property (nonatomic) NSTimeInterval previousTouchTime;
@@ -21,6 +24,8 @@
 @property (nonatomic) FSSPopoutMenuView *currentlySelectedMenuItemView;
 @property (nonatomic) FSSMenuItem *selectedMenuItem;
 @property (nonatomic) NSMutableDictionary *menu;
+@property (nonatomic) CGFloat menuItemViewSide, menuItemViewMargins, menuItemDistanceToFinger;
+@property (nonatomic) int subMenuCount;
 
 @end
 
@@ -37,6 +42,9 @@
     if(self) {
         _menuItems = [[NSMutableArray alloc] initWithArray:topMenu];
         _topMenuItems = topMenu;
+        _menuItemViewSide = 60;
+        _menuItemViewMargins = 10;
+        _menuItemDistanceToFinger = 100;
     }
     return self;
 }
@@ -51,6 +59,7 @@
 - (void)reset
 {
     self.menuItems = self.topMenuItems;
+    _subMenuCount = 0;
 }
 
 - (BOOL)shouldRequireFailureOfGestureRecognizer:(UIGestureRecognizer *)otherGestureRecognizer
@@ -66,6 +75,9 @@
     }
     return NO;
 }
+
+#pragma mark -
+#pragma mark Timers
 
 -(void)startInitialTouchTimer {
     self.touchTimer = [NSTimer scheduledTimerWithTimeInterval:1.0
@@ -99,7 +111,7 @@
 }
 
 -(void)selectionTouchTimerEndedWithoutStop {
-    NSLog(@"SELECTED!!!");
+    NSLog(@"SHOW SUBMENU!!!");
     [self showSubMenu];
 }
 
@@ -108,9 +120,61 @@
     
 }
 
+#pragma mark - 
+#pragma mark Menu Methods
+
+-(CGRect)menuItemViewRectForItemNumber:(int)viewNum ofTotal:(int)totalNum
+{
+    int indexOfLastView = totalNum-1;
+//    CGFloat fingerBuffer = self.menuItemDistanceToFinger;
+//    CGFloat totalHeightOfMenu = totalNum*self.menuItemViewSide + (totalNum-1)*self.menuItemViewMargins;
+//    CGFloat yOrigin = self.initialLocation.y - totalHeightOfMenu/2 + viewNum*(self.menuItemViewSide+self.menuItemViewMargins);
+//    CGFloat xCurveOffset = (fabsf(viewNum - indexOfLastView/2.0)/indexOfLastView) * self.menuItemDistanceToFinger * totalNum;
+//    CGFloat xOffset = (self.subMenuCount%2==1) ? -1*fingerBuffer*totalNum + xCurveOffset : fingerBuffer*totalNum - xCurveOffset;
+//    CGFloat xOrigin = self.initialLocation.x+xOffset;
+//    
+//    return CGRectMake(xOrigin, yOrigin, self.menuItemViewSide, self.menuItemViewSide);
+    float angleDegrees;
+    CGFloat xPullBack = 0;
+    if (totalNum < 3) {
+        angleDegrees = 45;
+    }
+    if(totalNum < 4 ) {
+        angleDegrees = 90;
+        xPullBack = self.menuItemDistanceToFinger/2;
+    }
+    else if ( totalNum < 6) {
+        angleDegrees = 140;
+        xPullBack = self.menuItemDistanceToFinger/2;
+    }
+    else {
+        angleDegrees = 180;
+    }
+    angleDegrees = angleDegrees * ((viewNum - indexOfLastView/2.0)/indexOfLastView);
+
+    CGFloat xCenterOffset;
+    if(self.subMenuCount%2 == 1) {
+        xCenterOffset = cosf(DEGREES_TO_RADIANS(angleDegrees))*self.menuItemDistanceToFinger*-1;
+        xCenterOffset += xPullBack;
+    }
+    else {
+        xCenterOffset = cosf(DEGREES_TO_RADIANS(angleDegrees))*self.menuItemDistanceToFinger;
+        xCenterOffset -= xPullBack;
+    }
+    
+    //pull back the items
+    CGFloat yCenterOffset = sinf(DEGREES_TO_RADIANS(angleDegrees))*self.menuItemDistanceToFinger;
+    
+    CGFloat xOrigin = self.initialLocation.x+xCenterOffset-self.menuItemViewSide/2;
+    CGFloat yOrigin = self.initialLocation.y+yCenterOffset-self.menuItemViewSide/2;
+    
+    return CGRectMake(xOrigin, yOrigin, self.menuItemViewSide, self.menuItemViewSide);
+}
+
 -(void)showSubMenu
 {
     [self dismissMenu];
+    self.subMenuCount++;
     FSSMenuItem *selectedMenuItem = [self.menu objectForKey:[NSValue valueWithNonretainedObject:self.currentlySelectedMenuItemView]];
     self.menuItems = selectedMenuItem.subMenuItems;
     [self showMenu];
@@ -118,16 +182,18 @@
 
 -(void)showMenu
 {
-    CGPoint initialLocation = self.initialLocation;
     self.menu = [[NSMutableDictionary alloc] init];
     self.menuItemViews = [[NSMutableArray alloc] init];
     for (int i = 0; i < self.menuItems.count; i++)
     {
         FSSMenuItem *menuItem = [self.menuItems objectAtIndex:i];
-        CGRect frame = CGRectMake((initialLocation.x+30), (initialLocation.y)+i*50, 100, 30);
+        CGRect frame = [self menuItemViewRectForItemNumber:i ofTotal:(int)self.menuItems.count];
         FSSPopoutMenuView *menuItemView = [[FSSPopoutMenuView alloc] initWithFrame:frame];
+        [menuItemView.layer setCornerRadius:self.menuItemViewSide/2];
         [menuItemView setOriginalFrame:frame];
+        [menuItemView setOriginalCornerRadius:self.menuItemViewSide/2];
         [menuItemView setSelectedFrame:CGRectMake(menuItemView.frame.origin.x-5, menuItemView.frame.origin.y-5, menuItemView.frame.size.width+10, menuItemView.frame.size.height+10)];
+        [menuItemView setSelectedCornerRadius:self.menuItemViewSide/2+5];
         [menuItemView setLabelText:menuItem.name];
         [self.view addSubview:menuItemView];
         [self.menuItemViews addObject:menuItemView];
@@ -151,7 +217,7 @@
     if (self.currentlySelectedMenuItemView != selectedItem) {
         [self stopSelectionTouchTimer];
         self.currentlySelectedMenuItemView.isSelected = NO;
-        [self.currentlySelectedMenuItemView setFrame:self.currentlySelectedMenuItemView.originalFrame];
+        [self animateMenuItemView:self.currentlySelectedMenuItemView isSelected:NO];
         self.currentlySelectedMenuItemView = selectedItem;
     }
     if (selectedItem && !selectedItem.isSelected) {
@@ -162,7 +228,8 @@
         }
         selectedItem.isSelected = YES;
         self.currentlySelectedMenuItemView = selectedItem;
-        [selectedItem setFrame:selectedItem.selectedFrame];
+        [self animateMenuItemView:self.currentlySelectedMenuItemView isSelected:YES];
+
     }
 }
 
@@ -176,6 +243,22 @@
     return nil;
 }
 
+-(void)animateMenuItemView:(FSSPopoutMenuView*)menuItemView isSelected:(BOOL)selected
+{
+    if(selected){
+        [menuItemView setFrame:menuItemView.selectedFrame];
+        [menuItemView.layer setCornerRadius:menuItemView.selectedCornerRadius];
+    }
+    else {
+        [menuItemView setFrame:menuItemView.originalFrame];
+        [menuItemView.layer setCornerRadius:menuItemView.originalCornerRadius];
+    }
+}
+
+
+
+#pragma mark -
+#pragma mark Touches
 
 - (CGFloat)distanceBetweenPointOne:(CGPoint)point1 pointTwo:(CGPoint)point2
 {
@@ -183,10 +266,6 @@
     CGFloat dy = point2.y - point1.y;
     return sqrt(dx*dx + dy*dy );
 };
-
-
-#pragma mark -
-#pragma mark Touches
 
 - (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
 {
