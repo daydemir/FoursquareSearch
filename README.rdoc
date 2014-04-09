@@ -1,0 +1,7 @@
+This project is for me to try a few different things.
+
+First: Connecting to the Foursquare API
+
+Second: Implementing custom gesture reognizer for long press menu
+
+And any other ideas as they come...
