@@ -16,6 +16,7 @@
 		22A1A5E618F503130046A0EA /* UIColor+FSSColors.m in Sources */ = {isa = PBXBuildFile; fileRef = 22A1A5E518F503130046A0EA /* UIColor+FSSColors.m */; };
 		22A1A5E918F505080046A0EA /* FSSMapView.m in Sources */ = {isa = PBXBuildFile; fileRef = 22A1A5E818F505080046A0EA /* FSSMapView.m */; };
 		22A1A5EC18F5090B0046A0EA /* FSSLocation.m in Sources */ = {isa = PBXBuildFile; fileRef = 22A1A5EB18F5090B0046A0EA /* FSSLocation.m */; };
+		22A1A5F018F522390046A0EA /* FSSDoubleTapAndPanGestureRecognizer.m in Sources */ = {isa = PBXBuildFile; fileRef = 22A1A5EF18F522390046A0EA /* FSSDoubleTapAndPanGestureRecognizer.m */; };
 		22AE43FB189D992B006FC3BB /* UIVenueDetailView.m in Sources */ = {isa = PBXBuildFile; fileRef = 22AE43FA189D992B006FC3BB /* UIVenueDetailView.m */; };
 		22C2D1DE189C562E001027E6 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 22C2D1DD189C562E001027E6 /* Foundation.framework */; };
 		22C2D1E0189C562E001027E6 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 22C2D1DF189C562E001027E6 /* CoreGraphics.framework */; };
@@ -78,6 +79,8 @@
 		22A1A5E818F505080046A0EA /* FSSMapView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSSMapView.m; sourceTree = "<group>"; };
 		22A1A5EA18F5090B0046A0EA /* FSSLocation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSSLocation.h; sourceTree = "<group>"; };
 		22A1A5EB18F5090B0046A0EA /* FSSLocation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSSLocation.m; sourceTree = "<group>"; };
+		22A1A5EE18F522390046A0EA /* FSSDoubleTapAndPanGestureRecognizer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSSDoubleTapAndPanGestureRecognizer.h; sourceTree = "<group>"; };
+		22A1A5EF18F522390046A0EA /* FSSDoubleTapAndPanGestureRecognizer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSSDoubleTapAndPanGestureRecognizer.m; sourceTree = "<group>"; };
 		22AE43F9189D992B006FC3BB /* UIVenueDetailView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UIVenueDetailView.h; sourceTree = "<group>"; };
 		22AE43FA189D992B006FC3BB /* UIVenueDetailView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UIVenueDetailView.m; sourceTree = "<group>"; };
 		22C2D1DA189C562E001027E6 /* Foursquare Search.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Foursquare Search.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -217,6 +220,8 @@
 				2264FB7A18CFE02F00512808 /* FSSMenu.m */,
 				22A0640118AB043000A82E6E /* FSSMenuItem.h */,
 				22A0640218AB043000A82E6E /* FSSMenuItem.m */,
+				22A1A5EE18F522390046A0EA /* FSSDoubleTapAndPanGestureRecognizer.h */,
+				22A1A5EF18F522390046A0EA /* FSSDoubleTapAndPanGestureRecognizer.m */,
 				2264FB7518CEB93D00512808 /* FSSLongPressMenuGestureRecognizer.h */,
 				2264FB7618CEB93D00512808 /* FSSLongPressMenuGestureRecognizer.m */,
 				22A1A5E418F503130046A0EA /* UIColor+FSSColors.h */,
@@ -396,6 +401,7 @@
 				2264FB7718CEB93D00512808 /* FSSLongPressMenuGestureRecognizer.m in Sources */,
 				22C2D232189C56DA001027E6 /* FSWebLogin.m in Sources */,
 				22C2D22C189C56DA001027E6 /* Foursquare2.m in Sources */,
+				22A1A5F018F522390046A0EA /* FSSDoubleTapAndPanGestureRecognizer.m in Sources */,
 				22A1A5E618F503130046A0EA /* UIColor+FSSColors.m in Sources */,
 				22C2D235189C56DA001027E6 /* NearbyVenuesViewController.m in Sources */,
 				22C2D22A189C56DA001027E6 /* FSOAuth.m in Sources */,

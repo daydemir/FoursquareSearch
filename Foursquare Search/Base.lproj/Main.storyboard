@@ -16,7 +16,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bBu-YE-6ka">
+                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bBu-YE-6ka">
                                 <rect key="frame" x="137" y="393" width="46" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Button">
@@ -27,7 +27,6 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="bBu-YE-6ka" firstAttribute="centerX" secondItem="kh9-bI-dsS" secondAttribute="centerX" id="GGn-K0-GsL"/>
-                            <constraint firstItem="cfJ-vK-OGU" firstAttribute="top" secondItem="bBu-YE-6ka" secondAttribute="bottom" constant="145" id="HZJ-4a-yYG"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="Mdh-Ph-vTa"/>

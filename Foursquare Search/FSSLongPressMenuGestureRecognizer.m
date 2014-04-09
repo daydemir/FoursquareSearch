@@ -50,7 +50,7 @@
 }
 
 
-- (void)ignoreTouch:(UITouch*)touch forEvent:(UIEvent*)event // if a touch isn't part of this gesture it can be passed to this method to be ignored. ignored touches won't be cancelled on the view even if cancelsTouchesInView is YES
+- (void)ignoreTouch:(UITouch*)touch forEvent:(UIEvent*)event// if a touch isn't part of this gesture it can be passed to this method to be ignored. ignored touches won't be cancelled on the view even if cancelsTouchesInView is YES
 {
     
 }
