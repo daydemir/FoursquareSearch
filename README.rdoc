@@ -1,7 +1,9 @@
 This project is for me to try a few different things.
 
-First: Connecting to the Foursquare API
+First: Connecting to the Foursquare API and searching nearby venues
 
 Second: Implementing custom gesture reognizer for long press menu
+
+Third: Implementing gesture recognizer to allow double tap and pan zooming on MKMapView (similar to how Google Maps uses this gesture) 
 
 And any other ideas as they come...
