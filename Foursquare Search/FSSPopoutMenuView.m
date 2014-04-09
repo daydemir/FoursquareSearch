@@ -7,6 +7,7 @@
 //
 
 #import "FSSPopoutMenuView.h"
+#import "UIColor+FSSColors.h"
 
 @interface FSSPopoutMenuView()
 
@@ -20,7 +21,7 @@
 {
     self = [super initWithFrame:frame];
     if (self) {
-        self.backgroundColor = [UIColor colorWithRed:0.307 green:0.244 blue:0.714 alpha:0.800];
+        self.backgroundColor = [UIColor softPurple];
         [self.layer setMasksToBounds:YES];
         [self setupLabel];
     }

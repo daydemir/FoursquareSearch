@@ -7,13 +7,13 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "FSSSearchQuery.h"
 
 @interface FSSVenuesViewController : UIViewController
 
+@property  (nonatomic) FSSSearchQuery *query;
 
-@property (strong, nonatomic) NSNumber *radius, *limit, *latitude, *longitude;
-@property (strong, nonatomic) NSString *query, *location;
+- (id)init;
 
-@property (nonatomic) BOOL useMyLocation;
 
 @end

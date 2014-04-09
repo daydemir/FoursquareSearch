@@ -7,7 +7,7 @@
 //
 
 #import "FSSVenuesViewController.h"
-#import <CoreLocation/CoreLocation.h>
+#import "FSSLocation.h"
 #import "Foursquare2.h"
 #import "FSSVenue.h"
 #import "FSSVenueDetailViewController.h"
@@ -19,8 +19,6 @@
 @interface FSSVenuesViewController () <UITableViewDataSource, UITableViewDelegate, CLLocationManagerDelegate, UIGestureRecognizerDelegate, UIViewControllerTransitioningDelegate>
 
 @property (weak, nonatomic) IBOutlet UITableView *VenuesTableView;
-@property (strong, nonatomic) CLLocationManager *locationManager;
-@property (strong, nonatomic) CLLocation *myLocation;
 @property (strong, nonatomic) NSMutableArray *venues;
 
 @property (nonatomic) int selectedVenueIndex;
@@ -31,33 +29,44 @@
 @property (nonatomic) NSMutableArray *menuItemViews;
 @property (nonatomic) NSArray *menu;
 
-
-
-
-
-
 @end
 
 @implementation FSSVenuesViewController
 
+- (id)init
+{
+    self = [super init];
+    if (self) {
+
+    }
+    return self;
+}
+
+- (FSSSearchQuery*)query
+{
+    if(!_query) {
+        _query = [[FSSSearchQuery alloc] init];
+    }
+    return _query;
+}
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    self.locationManager = [[CLLocationManager alloc] init];
     self.venues = [[NSMutableArray alloc] init];
-    [Foursquare2 setupFoursquareWithClientId:@"OM1NKM2RUG1AEWDGCY2Q4EYJ1VL3VABTCSSMNOYFGJXP2LCT" secret:@"M3XFABJGDIOFMFBTZ5MZ1HQTHVRXMHIN423YO2BQTABHPKQ5" callbackURL:@"foursearch://foursquare"];
+//    [self.navigationController setNavigationBarHidden:YES];
+
+    [Foursquare2 setupFoursquareWithClientId:@"OM1NKM2RUG1AEWDGCY2Q4EYJ1VL3VABTCSSMNOYFGJXP2LCT"
+                                      secret:@"M3XFABJGDIOFMFBTZ5MZ1HQTHVRXMHIN423YO2BQTABHPKQ5"
+                                 callbackURL:@"foursearch://foursquare"];
     [self.VenuesTableView setDataSource:self];
     [self.VenuesTableView setDelegate:self];
-    [self.locationManager setDelegate:self];
-    self.locationManager.desiredAccuracy = kCLLocationAccuracyBest;
-    self.locationManager.distanceFilter = kCLDistanceFilterNone;
-    [self.locationManager startMonitoringSignificantLocationChanges];
-//    [self.locationManager startUpdatingLocation];
+//    [[[FSSLocation getInstance] locationManager] setDelegate:self];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(updatedMyLocation:) name:kFSSUpdatedMyLocationNotification object:nil];
+
     [self.VenuesTableView setHidden:YES];
-    self.limit = [NSNumber numberWithInt:50];
-    self.radius = [NSNumber numberWithInt:10000];
     
+    //Long press menu sample items
     FSSMenuItem *item1 = [[FSSMenuItem alloc] init];
     FSSMenuItem *item2 = [[FSSMenuItem alloc] init];
     FSSMenuItem *item3 = [[FSSMenuItem alloc] init];
@@ -94,6 +103,7 @@
     lpgr.delegate = self;
     [self.VenuesTableView addGestureRecognizer:lpgr];
     
+    [self getVenues];    
 
 }
 
@@ -105,14 +115,20 @@
 
 - (void)getVenues
 {
-    [Foursquare2 venueSearchNearByLatitude:[NSNumber numberWithDouble:self.myLocation.coordinate.latitude] longitude:[NSNumber numberWithDouble:self.myLocation.coordinate.longitude] query:self.query limit:self.limit intent:intentBrowse radius:self.radius categoryId:nil callback:^(BOOL success, id result){
-        if(success && [result isKindOfClass:[NSDictionary class]])
-        {
-            self.venues = [self parseSearchVenuesResultsDictionary:result];
-            [self.VenuesTableView reloadData];
-            [self.VenuesTableView setHidden:NO];
-        }
-    }];
+    [Foursquare2 venueSearchNearByLatitude:[NSNumber numberWithDouble:[[FSSLocation getInstance] myLocation].coordinate.latitude]
+                                 longitude:[NSNumber numberWithDouble:[[FSSLocation getInstance] myLocation].coordinate.longitude]
+                                     query:self.query.queryText
+                                     limit:self.query.limit
+                                    intent:intentBrowse
+                                    radius:self.query.radius
+                                categoryId:nil
+                                  callback:^(BOOL success, id result){
+                                      if(success && [result isKindOfClass:[NSDictionary class]]) {
+                                        self.venues = [self parseSearchVenuesResultsDictionary:result];
+                                        [self.VenuesTableView reloadData];
+                                        [self.VenuesTableView setHidden:NO];
+                                      }
+                                  }];
     
     
 }
@@ -146,7 +162,7 @@
     [newVenue setVenueId:[result objectForKey:@"id"]];
     
     //category
-    NSArray *category = [result objectForKey:@"categories"];
+//    NSArray *category = [result objectForKey:@"categories"];
 //    if (category[0]) {
 //        [newVenue setCategory:[category[0] objectForKey:@"name"]];
 //    }
@@ -178,16 +194,13 @@
 
 //CLLocationManager delegate
 
-- (void)locationManager:(CLLocationManager *)manager didUpdateLocations:(NSArray *)locations
+//- (void)locationManager:(CLLocationManager *)manager didUpdateLocations:(NSArray *)locations
+//{
+//    [self getVenues];
+//}
+
+- (void)updatedMyLocation:(NSNotification*)notification
 {
-    self.myLocation = locations[0];
-    NSTimeInterval howRecent = [[self.myLocation timestamp] timeIntervalSinceNow];
-    if (abs(howRecent)>15.0) {
-        [self.locationManager startMonitoringSignificantLocationChanges];
-    }
-    else {
-        [self.locationManager stopUpdatingLocation];
-    }
     [self getVenues];
 }
 

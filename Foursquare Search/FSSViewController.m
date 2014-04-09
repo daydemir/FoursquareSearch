@@ -7,12 +7,13 @@
 //
 
 #import "FSSViewController.h"
+#import "FSSVenuesViewController.h"
 
 @interface FSSViewController ()
 
 @property (weak, nonatomic) IBOutlet UIButton *searchButton;
 @property (strong, nonatomic) UIPickerView *radiusPicker, *limitPicker;
-@property (strong, nonatomic) UITableViewController *venuesListViewController;
+@property (strong, nonatomic) FSSVenuesViewController *venuesListViewController;
 
 @end
 
@@ -21,9 +22,9 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    self.venuesListViewController = [[UITableViewController alloc] initWithStyle:UITableViewStylePlain];
     
-    [self.searchButton setTitle:@"Find My Food" forState:UIControlStateNormal];
+    [self.navigationController.navigationBar setHidden:YES];
+    [self.searchButton setTitle:@"GO!" forState:UIControlStateNormal];
     [self.searchButton addTarget:self action:@selector(searchTapped) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:self.searchButton];
 }
@@ -43,6 +44,7 @@
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
     if([segue.identifier isEqualToString:@"showVenues"]){
+        self.venuesListViewController = [[FSSVenuesViewController alloc] init];
         self.venuesListViewController = segue.destinationViewController;
     }
 }

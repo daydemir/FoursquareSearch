@@ -8,6 +8,7 @@
 
 #import "FSSVenueDetailViewController.h"
 #import "UIVenueDetailView.h"
+#import "UIColor+FSSColors.h"
 
 @interface FSSVenueDetailViewController ()
 
@@ -42,6 +43,8 @@
     for (int i = 0; i < self.venues.count; i++) {
         [self.venueViews addObject:[NSNull null]];
     }
+//    [self.navigationController setNavigationBarHidden:YES];
+
     self.scrollView = [[UIScrollView alloc] init];
     [self.scrollView setPagingEnabled:YES];
     [self.view addSubview:self.scrollView];
@@ -89,7 +92,7 @@
     [view setMyVenue:venue];
 
 //    view.backgroundColor = [UIColor colorWithRed:index/self.venues.count green:index/self.venues.count blue:index/self.venues.count alpha:1.0];
-    [view setBackgroundColor:[UIColor purpleColor]];
+    [view setBackgroundColor:[UIColor softPurple]];
     [self.scrollView addSubview:view];
 }
 
