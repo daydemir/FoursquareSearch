@@ -23,12 +23,13 @@
 - (MKMapView*)mapView
 {
     if(!_mapView) {
-        _mapView = [[MKMapView alloc] initWithFrame:self.bounds];
+        _mapView = [[MKMapView alloc] initWithFrame:CGRectMake(0, 0, self.bounds.size.width, self.bounds.size.width)];
         [_mapView setMapType:MKMapTypeStandard];
         [_mapView.layer setMasksToBounds:YES];
         [_mapView setShowsUserLocation:YES];
         [_mapView setDelegate:self];
         [_mapView setTintColor:[UIColor softPurple]];
+        [[_mapView layer] setCornerRadius:_mapView.frame.size.width/2];
     }
     return _mapView;
 }
@@ -40,6 +41,7 @@
     if (self) {
         self.cornerRadius = frame.size.width/2;
         self.firstShow = YES;
+        self.backgroundColor = [UIColor whiteColor];
         [self addGestureRecognizer:[[FSSDoubleTapAndPanGestureRecognizer alloc] initWithTarget:self action:@selector(doubleTapAndPanOnMap:)]];
     }
     return self;
